@@ -1,0 +1,340 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12453,        331]
+NotebookOptionsPosition[     12023,        312]
+NotebookOutlinePosition[     12395,        328]
+CellTagsIndexPosition[     12352,        325]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"E1", "=", "0.0534"}], ";"}], "      ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    SuperscriptBox["10", "14"], 
+    RowBox[{"W", "/", 
+     SuperscriptBox["cm", "2"]}]}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Omega]", "=", "0.057"}], ";"}], "          ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"800", "nm"}], " ", "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Sigma]", "=", 
+    RowBox[{"10", "*", "41.34"}]}], ";"}], "    ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"FWHM", " ", "of", " ", "Gauss", " ", "pulse"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"E2", "=", "0.046"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["E", "\[Omega]p"], "[", 
+    RowBox[{"t_", ",", "\[Tau]_", ",", "\[Theta]_"}], "]"}], ":=", 
+   RowBox[{"E1", " ", 
+    RowBox[{"Sin", "[", "\[Theta]", "]"}], 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "2"}], 
+      RowBox[{"Log", "[", "2", "]"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"t", "-", "\[Tau]"}], "\[Sigma]"], ")"}], "2"]}], "]"}], 
+    RowBox[{"Cos", "[", 
+     RowBox[{"\[Omega]", " ", 
+      RowBox[{"(", 
+       RowBox[{"t", "-", "\[Tau]"}], ")"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["E", "\[Omega]s"], "[", 
+    RowBox[{"t_", ",", "\[Tau]_", ",", "\[Theta]_"}], "]"}], ":=", 
+   RowBox[{"E1", " ", 
+    RowBox[{"Cos", "[", "\[Theta]", "]"}], 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "2"}], 
+      RowBox[{"Log", "[", "2", "]"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox[
+         RowBox[{"t", "-", "\[Tau]"}], "\[Sigma]"], ")"}], "2"]}], "]"}], 
+    RowBox[{"Cos", "[", 
+     RowBox[{"\[Omega]", " ", 
+      RowBox[{"(", 
+       RowBox[{"t", "-", "\[Tau]"}], ")"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    SubscriptBox["E", 
+     RowBox[{"2", "\[Omega]s"}]], "[", "t_", "]"}], ":=", " ", 
+   RowBox[{"E2", " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      RowBox[{"-", "2"}], 
+      RowBox[{"Log", "[", "2", "]"}], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox["t", "\[Sigma]"], ")"}], "2"]}], "]"}], 
+    RowBox[{"Sin", "[", 
+     RowBox[{"2", "\[Omega]", " ", "t"}], "]"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7304130926632175`*^9, 3.730413125046218*^9}, {
+   3.7304131599052176`*^9, 3.7304133200582175`*^9}, 3.7304133582002172`*^9, {
+   3.7304133898332176`*^9, 3.7304133914112177`*^9}, {3.7304147206432176`*^9, 
+   3.7304147770632176`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ListPointPlot3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{
+            SubscriptBox["E", "\[Omega]p"], "[", 
+            RowBox[{"t", ",", "\[Tau]", ",", "\[Theta]"}], "]"}], ",", "t", 
+           ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", 
+           RowBox[{"-", "1000"}], ",", "1000", ",", "0.3"}], "}"}]}], "]"}], 
+       ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "t", ",", 
+           RowBox[{
+            RowBox[{
+             SubscriptBox["E", "\[Omega]s"], "[", 
+             RowBox[{"t", ",", "\[Tau]", ",", "\[Theta]"}], "]"}], "+", 
+            RowBox[{
+             SubscriptBox["E", 
+              RowBox[{"2", "\[Omega]s"}]], "[", "t", "]"}]}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", 
+           RowBox[{"-", "1000"}], ",", "1000", ",", "0.3"}], "}"}]}], "]"}]}],
+       "}"}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", "Blue"}], "}"}]}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"BoxRatios", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0.5", ",", " ", "1.5", ",", " ", "0.5"}], "}"}]}]}], "]"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", ",", "0", ",", 
+     RowBox[{"\[Pi]", "/", "2"}], ",", 
+     RowBox[{"\[Pi]", "/", "80"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Tau]", ",", "0", ",", "1.333"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"ListPointPlot3D", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["E", "\[Omega]p"], "[", 
+          RowBox[{"t", ",", "\[Tau]", ",", "\[Theta]"}], "]"}], ",", "t", ",", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["E", "\[Omega]s"], "[", 
+           RowBox[{"t", ",", "\[Tau]", ",", "\[Theta]"}], "]"}], "+", 
+          RowBox[{
+           SubscriptBox["E", 
+            RowBox[{"2", "\[Omega]s"}]], "[", "t", "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", 
+         RowBox[{"-", "1000"}], ",", "1000", ",", "0.3"}], "}"}]}], "]"}], 
+     ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Large"}], ",", 
+     RowBox[{"Axes", "\[Rule]", "True"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", "Magenta", "}"}]}], ",", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+     RowBox[{"BoxRatios", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0.5", ",", " ", "1.5", ",", " ", "0.5"}], "}"}]}]}], "]"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]", ",", "0", ",", 
+     RowBox[{"\[Pi]", "/", "2"}], ",", 
+     RowBox[{"\[Pi]", "/", "180"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Tau]", ",", "0", ",", "1.333"}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7304134472382174`*^9, 3.7304136665752172`*^9}, {
+   3.7304137070732174`*^9, 3.730413707541218*^9}, {3.730413753376218*^9, 
+   3.7304138160192175`*^9}, {3.730413854034218*^9, 3.7304139046812177`*^9}, {
+   3.730413936791218*^9, 3.7304139709582176`*^9}, {3.7304144065832176`*^9, 
+   3.7304144308162174`*^9}, {3.730414849192218*^9, 3.7304148504062176`*^9}, {
+   3.730414887600218*^9, 3.7304149518092175`*^9}, {3.7304150933062177`*^9, 
+   3.7304150950072174`*^9}, {3.7304152427672176`*^9, 3.7304152431542177`*^9}, 
+   3.7304155906232176`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Theta]$$ = Rational[1, 80] 
+    Pi, $CellContext`\[Tau]$$ = 0.307, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Theta]$$], 0, Rational[1, 2] Pi, Rational[1, 80] 
+      Pi}, {
+      Hold[$CellContext`\[Tau]$$], 0, 1.333}}, Typeset`size$$ = {
+    806., {435., 445.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Theta]$2858$$ = 
+    0, $CellContext`\[Tau]$2859$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Theta]$$ = 0, $CellContext`\[Tau]$$ = 0},
+       "ControllerVariables" :> {
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$2858$$, 0], 
+        Hold[$CellContext`\[Tau]$$, $CellContext`\[Tau]$2859$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ListPointPlot3D[{
+         Table[{
+           Subscript[
+           E, $CellContext`\[Omega]p][$CellContext`t, $CellContext`\[Tau]$$, \
+$CellContext`\[Theta]$$], $CellContext`t, 0}, {$CellContext`t, -1000, 1000, 
+           0.3}], 
+         Table[{
+          0, $CellContext`t, 
+           Subscript[
+            E, $CellContext`\[Omega]s][$CellContext`t, $CellContext`\[Tau]$$, \
+$CellContext`\[Theta]$$] + 
+           Subscript[
+            E, 2 $CellContext`\[Omega]s][$CellContext`t]}, {$CellContext`t, \
+-1000, 1000, 0.3}]}, ImageSize -> Large, Axes -> True, 
+        PlotStyle -> {Red, Blue}, PlotRange -> All, 
+        BoxRatios -> {0.5, 1.5, 0.5}], 
+      "Specifications" :> {{$CellContext`\[Theta]$$, 0, Rational[1, 2] Pi, 
+         Rational[1, 80] Pi}, {$CellContext`\[Tau]$$, 0, 1.333}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{871., {518., 527.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.730415477798218*^9, 3.7304155918402176`*^9, {3.7355251455822124`*^9, 
+   3.7355251636582127`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Theta]$$ = 0, $CellContext`\[Tau]$$ = 0, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Theta]$$], 0, Rational[1, 2] Pi, Rational[1, 180] 
+      Pi}, {
+      Hold[$CellContext`\[Tau]$$], 0, 1.333}}, Typeset`size$$ = {
+    806., {436., 447.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`\[Theta]$2887$$ = 
+    0, $CellContext`\[Tau]$2888$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`\[Theta]$$ = 0, $CellContext`\[Tau]$$ = 0},
+       "ControllerVariables" :> {
+        Hold[$CellContext`\[Theta]$$, $CellContext`\[Theta]$2887$$, 0], 
+        Hold[$CellContext`\[Tau]$$, $CellContext`\[Tau]$2888$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ListPointPlot3D[
+        Table[{
+          Subscript[
+          E, $CellContext`\[Omega]p][$CellContext`t, $CellContext`\[Tau]$$, \
+$CellContext`\[Theta]$$], $CellContext`t, 
+          Subscript[
+           E, $CellContext`\[Omega]s][$CellContext`t, $CellContext`\[Tau]$$, \
+$CellContext`\[Theta]$$] + 
+          Subscript[
+           E, 2 $CellContext`\[Omega]s][$CellContext`t]}, {$CellContext`t, \
+-1000, 1000, 0.3}], ImageSize -> Large, Axes -> True, PlotStyle -> {Magenta}, 
+        PlotRange -> All, BoxRatios -> {0.5, 1.5, 0.5}], 
+      "Specifications" :> {{$CellContext`\[Theta]$$, 0, Rational[1, 2] Pi, 
+         Rational[1, 180] Pi}, {$CellContext`\[Tau]$$, 0, 1.333}}, 
+      "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{871., {520., 529.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.730415477798218*^9, 3.7304155918402176`*^9, {3.7355251455822124`*^9, 
+   3.7355251644472127`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1920, 998},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.4 Inherited,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2665, 81, 289, "Input"],
+Cell[CellGroupData[{
+Cell[3248, 105, 3683, 95, 124, "Input"],
+Cell[6934, 202, 2607, 55, 1068, "Output"],
+Cell[9544, 259, 2463, 50, 1104, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
